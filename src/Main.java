@@ -6,7 +6,7 @@ import java.util.*;
 
 
 public class Main {
-    static JLabel d2, d4, d6, d8, d12, d20, dAle, d2Res, d4Res, d6Res, d8Res, d12Res, d20Res, dAleRes;
+    static JLabel d2, d4, d6, d8, d12, d20, dAle, dadosSum, dadosTot;
     static JTextField dT2, dT4, dT6, dT8, dT12, dT20, dTAle1, dTAle2;
 
     private static class ButtonHandler implements ActionListener {
@@ -22,6 +22,7 @@ public class Main {
             int dadoAle2;
 
             int i;
+            int j;
 
             int dad2Re = 0;
             int dad4Re = 0;
@@ -34,7 +35,7 @@ public class Main {
             Random r = new Random();
 
             String dad2, dad4, dad6, dad8, dad12, dad20, dadAle1, dadAle2;
-
+            String sr = "";
             if (evt.getSource() == dT2) {
                 try {
                     dad2 = dT2.getText();
@@ -45,7 +46,10 @@ public class Main {
                     return;
                 }
                 for (i = 0; i < dado2; i++) {
-                    dad2Re = dad2Re + (r.nextInt((2 - 1) + 1) + 1);
+                    j = r.nextInt((2 - 1) + 1) + 1;
+                    dad2Re = dad2Re + j;
+                    sr = sr + simplificarString(j);
+                    dadosTot.setText(Integer.toString(dad2Re));
                 }
             }
             if (evt.getSource() == dT4) {
@@ -58,7 +62,10 @@ public class Main {
                     return;
                 }
                 for (i = 0; i < dado4; i++) {
-                    dad4Re = dad4Re + (r.nextInt((4 - 1) + 1) + 1);
+                    j = r.nextInt((4 - 1) + 1) + 1;
+                    dad4Re = dad4Re + j;
+                    sr = sr + simplificarString(j);
+                    dadosTot.setText(Integer.toString(dad4Re));
                 }
             }
             if (evt.getSource() == dT6) {
@@ -71,7 +78,10 @@ public class Main {
                     return;
                 }
                 for (i = 0; i < dado6; i++) {
-                    dad6Re = dad6Re + (r.nextInt((6 - 1) + 1) + 1);
+                    j =r.nextInt((6 - 1) + 1) + 1;
+                    dad6Re = dad6Re + j;
+                    sr = sr + simplificarString(j);
+                    dadosTot.setText(Integer.toString(dad6Re));
                 }
             }
             if (evt.getSource() == dT8) {
@@ -84,7 +94,10 @@ public class Main {
                     return;
                 }
                 for (i = 0; i < dado8; i++) {
-                    dad8Re = dad8Re + (r.nextInt((8 - 1) + 1) + 1);
+                    j = r.nextInt((8 - 1) + 1) + 1;
+                    dad8Re = dad8Re + j;
+                    sr = sr + simplificarString(j);
+                    dadosTot.setText(Integer.toString(dad8Re));
                 }
             }
             if (evt.getSource() == dT12) {
@@ -97,7 +110,10 @@ public class Main {
                     return;
                 }
                 for (i = 0; i < dado12; i++) {
-                    dad12Re = dad12Re + (r.nextInt((12 - 1) + 1) + 1);
+                    j = r.nextInt((12 - 1) + 1) + 1;
+                    dad12Re = dad12Re + j;
+                    sr = sr + simplificarString(j);
+                    dadosTot.setText(Integer.toString(dad12Re));
                 }
             }
             if (evt.getSource() == dT20) {
@@ -110,7 +126,10 @@ public class Main {
                     return;
                 }
                 for (i = 0; i < dado20; i++) {
-                    dad20Re = dad20Re + (r.nextInt((20 - 1) + 1) + 1);
+                    j = r.nextInt((20 - 1) + 1) + 1;
+                    dad20Re = dad20Re + j;
+                    sr = sr + simplificarString(j);
+                    dadosTot.setText(Integer.toString(dad20Re));
                 }
             }
             if (evt.getSource() == dTAle1 || evt.getSource() == dTAle2) {
@@ -128,17 +147,22 @@ public class Main {
                     return;
                 }
                 for (i = 0; i < dadoAle; i++) {
-                    dadAleRe = dadAleRe + (r.nextInt(( dadoAle2- 1) + 1) + 1);
+                    j = r.nextInt(( dadoAle2 - 1) + 1) + 1;
+                    dadAleRe = dadAleRe + j;
+                    sr = sr + simplificarString(j);
+                    dadosTot.setText(Integer.toString(dadAleRe));
                 }
             }
+            //mostrar los sumandos de la tirada
+            sr = sr.substring(0,sr.length()-2);
+            dadosSum.setText(sr);
+        }
 
-            d2Res.setText(Integer.toString(dad2Re));
-            d4Res.setText(Integer.toString(dad4Re));
-            d6Res.setText(Integer.toString(dad6Re));
-            d8Res.setText(Integer.toString(dad8Re));
-            d12Res.setText(Integer.toString(dad12Re));
-            d20Res.setText(Integer.toString(dad20Re));
-            dAleRes.setText(Integer.toString(dadAleRe));
+
+        private static String simplificarString(int a){
+            String sumando = "";
+            sumando = sumando + a + " + ";
+            return sumando;
         }
     }
 
@@ -168,8 +192,9 @@ public class Main {
 
         JPanelBackground  zzz = new JPanelBackground ();
         zzz.setOpaque(true);
-        zzz.setBackground("C:\\Users\\elret\\IdeaProjects\\dados\\src\\media\\D&D Transparent.png");
+        zzz.setBackground("C:\\Users\\elret\\IdeaProjects\\dados\\src\\media\\TEST.png");
         JPanel main = new JPanel();
+        main.setBackground(new Color(0,0,0,0));
         JPanel d2Panel = new JPanel();
         JPanel d4Panel = new JPanel();
         JPanel d6Panel = new JPanel();
@@ -177,27 +202,23 @@ public class Main {
         JPanel d12Panel = new JPanel();
         JPanel d20Panel = new JPanel();
         JPanel dAlePanel = new JPanel();
+        JPanel sumaSumandos = new JPanel();
+        JPanel dadosTotal = new JPanel();
 
-        main.setLayout(new GridLayout(5,3));
+        main.setLayout(new GridLayout(9,0));
 
         ButtonHandler bh = new ButtonHandler();
 
-        d2 = new JLabel("d2");
-        d4 = new JLabel("d4");
-        d6 = new JLabel("d6");
-        d8 = new JLabel("d8");
-        d12 = new JLabel("d12");
-        d20 = new JLabel("d20");
-        dAle = new JLabel("d");
+        d2 = new JLabel("D2");
+        d4 = new JLabel("D4");
+        d6 = new JLabel("D6");
+        d8 = new JLabel("D8");
+        d12 = new JLabel("D12");
+        d20 = new JLabel("D20");
+        dAle = new JLabel("D");
 
-        d2Res = new JLabel("0");
-        d4Res = new JLabel("0");
-        d6Res = new JLabel("0");
-        d8Res = new JLabel("0");
-        d12Res = new JLabel("0");
-        d20Res = new JLabel("0");
-        dAleRes = new JLabel("0");
-
+        dadosSum = new JLabel("0");
+        dadosTot = new JLabel("0");
 
 
         dT2 =new JTextField("0",10);
@@ -220,33 +241,29 @@ public class Main {
 
         d2Panel.add(dT2);
         d2Panel.add(d2);
-        d2Panel.add(d2Res);
 
 
         d4Panel.add(dT4);
         d4Panel.add(d4);
-        d4Panel.add(d4Res);
 
         d6Panel.add(dT6);
         d6Panel.add(d6);
-        d6Panel.add(d6Res);
 
         d8Panel.add(dT8);
         d8Panel.add(d8);
-        d8Panel.add(d8Res);
 
         d12Panel.add(dT12);
         d12Panel.add(d12);
-        d12Panel.add(d12Res);
 
         d20Panel.add(dT20);
         d20Panel.add(d20);
-        d20Panel.add(d20Res);
 
         dAlePanel.add(dTAle1);
         dAlePanel.add(dAle);
         dAlePanel.add(dTAle2);
-        dAlePanel.add(dAleRes);
+
+        sumaSumandos.add(dadosSum);
+        dadosTotal.add(dadosTot);
 
         main.add(d2Panel).setBackground(new Color(0,0,0,0));
         main.add(d4Panel).setBackground(new Color(0,0,0,0));
@@ -255,8 +272,10 @@ public class Main {
         main.add(d12Panel).setBackground(new Color(0,0,0,0));
         main.add(d20Panel).setBackground(new Color(0,0,0,0));
         main.add(dAlePanel).setBackground(new Color(0,0,0,0));
+        main.add(sumaSumandos).setBackground(new Color(0,0,0,0));
+        main.add(dadosTotal).setBackground(new Color(0,0,0,0));
 
-        zzz.add(main).setBackground(new Color(0,0,0,0));
+        zzz.add(main, BorderLayout.CENTER);
 
         window.setContentPane(zzz);
         window.setSize(1500,750);
