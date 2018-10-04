@@ -221,14 +221,22 @@ public class Main {
         dadosTot = new JLabel("0");
 
 
-        dT2 =new JTextField("0",10);
-        dT4 =new JTextField("0",10);
-        dT6 =new JTextField("0",10);
-        dT8 =new JTextField("0",10);
-        dT12 =new JTextField("0",10);
-        dT20 =new JTextField("0",10);
-        dTAle1 =new JTextField("0",10);
-        dTAle2 =new JTextField("0",10);
+        dT2 =new JTextField("",2);
+        dT2.setHorizontalAlignment(JTextField.CENTER);
+        dT4 =new JTextField("",2);
+        dT4.setHorizontalAlignment(JTextField.CENTER);
+        dT6 =new JTextField("",2);
+        dT6.setHorizontalAlignment(JTextField.CENTER);
+        dT8 =new JTextField("",2);
+        dT8.setHorizontalAlignment(JTextField.CENTER);
+        dT12 =new JTextField("",2);
+        dT12.setHorizontalAlignment(JTextField.CENTER);
+        dT20 =new JTextField("",2);
+        dT20.setHorizontalAlignment(JTextField.CENTER);
+        dTAle1 =new JTextField("",2);
+        dTAle1.setHorizontalAlignment(JTextField.CENTER);
+        dTAle2 =new JTextField("",2);
+        dTAle2.setHorizontalAlignment(JTextField.CENTER);
 
         dT2.addActionListener(bh);
         dT4.addActionListener(bh);
@@ -278,7 +286,7 @@ public class Main {
         zzz.add(main, BorderLayout.CENTER);
 
         window.setContentPane(zzz);
-        window.setSize(1500,750);
+        window.setSize(400,400);
         window.setLocationRelativeTo(null);
         window.setIconImage(new ImageIcon("C:\\Users\\elret\\IdeaProjects\\dados\\src\\media\\d20.png").getImage());
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
