@@ -3,6 +3,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
 
+
+
 public class Main {
     static JLabel d2, d4, d6, d8, d12, d20, dAle, d2Res, d4Res, d6Res, d8Res, d12Res, d20Res, dAleRes;
     static JTextField dT2, dT4, dT6, dT8, dT12, dT20, dTAle1, dTAle2;
@@ -140,9 +142,33 @@ public class Main {
         }
     }
 
-    public static void main(String[] args){
-        JFrame window = new JFrame();
+    public static class JPanelBackground extends JPanel{
+        private Image background;
 
+        public void paintComponent(Graphics g){
+            int width = this.getSize().width;
+            int height = this.getSize().height;
+
+            if(this.background != null){
+                g.drawImage(this.background,0,0, width, height, null);
+            }
+            super.paintComponent(g);
+        }
+
+        public void setBackground(String imagePath){
+            this.setOpaque(false);
+            this.background = new ImageIcon(imagePath).getImage();
+            repaint();
+        }
+    }
+
+    public static void main(String[] args){
+
+        JFrame window = new JFrame("Roll Dice beta 0.1");
+
+        JPanelBackground  zzz = new JPanelBackground ();
+        zzz.setOpaque(true);
+        zzz.setBackground("C:\\Users\\elret\\IdeaProjects\\dados\\src\\media\\D&D Transparent.png");
         JPanel main = new JPanel();
         JPanel d2Panel = new JPanel();
         JPanel d4Panel = new JPanel();
@@ -151,6 +177,8 @@ public class Main {
         JPanel d12Panel = new JPanel();
         JPanel d20Panel = new JPanel();
         JPanel dAlePanel = new JPanel();
+
+        main.setLayout(new GridLayout(5,3));
 
         ButtonHandler bh = new ButtonHandler();
 
@@ -170,7 +198,7 @@ public class Main {
         d20Res = new JLabel("0");
         dAleRes = new JLabel("0");
 
-        main.setLayout(new GridLayout(9,1));
+
 
         dT2 =new JTextField("0",10);
         dT4 =new JTextField("0",10);
@@ -193,6 +221,7 @@ public class Main {
         d2Panel.add(dT2);
         d2Panel.add(d2);
         d2Panel.add(d2Res);
+
 
         d4Panel.add(dT4);
         d4Panel.add(d4);
@@ -219,17 +248,20 @@ public class Main {
         dAlePanel.add(dTAle2);
         dAlePanel.add(dAleRes);
 
-        main.add(d2Panel);
-        main.add(d4Panel);
-        main.add(d6Panel);
-        main.add(d8Panel);
-        main.add(d12Panel);
-        main.add(d20Panel);
-        main.add(dAlePanel);
+        main.add(d2Panel).setBackground(new Color(0,0,0,0));
+        main.add(d4Panel).setBackground(new Color(0,0,0,0));
+        main.add(d6Panel).setBackground(new Color(0,0,0,0));
+        main.add(d8Panel).setBackground(new Color(0,0,0,0));
+        main.add(d12Panel).setBackground(new Color(0,0,0,0));
+        main.add(d20Panel).setBackground(new Color(0,0,0,0));
+        main.add(dAlePanel).setBackground(new Color(0,0,0,0));
 
-        window.setContentPane(main);
-        window.setSize(400,400);
-        window.setLocation(150,150);
+        zzz.add(main).setBackground(new Color(0,0,0,0));
+
+        window.setContentPane(zzz);
+        window.setSize(1500,750);
+        window.setLocationRelativeTo(null);
+        window.setIconImage(new ImageIcon("C:\\Users\\elret\\IdeaProjects\\dados\\src\\media\\d20.png").getImage());
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
     }
